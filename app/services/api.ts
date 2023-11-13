@@ -1,0 +1,10 @@
+import axios, { AxiosError } from 'axios';
+import { parseCookies } from 'nookies';
+import nookies from 'nookies';
+
+export const api = axios.create({
+    baseURL: 'http://localhost:3333',
+    headers: {
+      Authorization: `Bearer ${ "teste" }`
+    }
+  })

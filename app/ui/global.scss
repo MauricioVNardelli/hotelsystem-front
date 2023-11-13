@@ -1,0 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--white: #FFF;
+	--black: #000;
+
+	--purple: #800080;
+	--gray-200: #F5F5F5;
+}
+
+button {
+	cursor: pointer;
+}
+
+body {
+	background: var(--gray-200);
+}
