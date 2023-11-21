@@ -16,6 +16,7 @@ export default function Login() {
         <input placeholder="Password" name="password" />
         <MyButton type='submit'>Entrar</MyButton>
       </form>
+      
       {message === 'CredentialSignin' && 
         (
           <p>
@@ -23,6 +24,7 @@ export default function Login() {
           </p>
         )
       }
+
     </div>
   )
 }
