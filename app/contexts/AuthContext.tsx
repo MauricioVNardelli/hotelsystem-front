@@ -2,7 +2,7 @@
 
 import { destroyCookie, setCookie, parseCookies } from "nookies";
 import { createContext, ReactNode, use, useState } from "react";
-import { api } from "@/app/services/apiClient";
+import { api } from "@/app/services/api";
 
 type AuthContextData = {
   user?: UserProps;
