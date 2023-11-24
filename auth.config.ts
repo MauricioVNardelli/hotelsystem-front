@@ -19,7 +19,7 @@ export const authConfig = {
       
       } else if (isLoggedIn) {
         console.log("Redirencionando para dashboard");
-        
+
         return Response.redirect(new URL('/system/dashboard', nextUrl));
       }
       
