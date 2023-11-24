@@ -12,8 +12,8 @@ export default function Login() {
       <h1>Login</h1>
       
       <form action={formAction}>
-        <input placeholder="Usuário" name="email" />
-        <input placeholder="Password" name="password" />
+        <input placeholder="Usuário" name="email" /><br/>
+        <input placeholder="Password" name="password" /><br/>
         <MyButton type='submit'>Entrar</MyButton>
       </form>
       

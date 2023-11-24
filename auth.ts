@@ -13,13 +13,14 @@ async function getUser(email: string, password: string): Promise<User | undefine
   
   try {        
     
+    let user;
+
     await api
     .post('/session', { email, password } )
     .then(function(response) {      
-      const user = <User>response.data;
+      user = <User>response.data;
 
       console.log(response.data);
-      return user;
     })
     .catch(function(error) {
       const msgError = <ErrorResponse>error.response.data;
@@ -27,7 +28,7 @@ async function getUser(email: string, password: string): Promise<User | undefine
       console.error(msgError.error);
     });        
 
-    return undefined;
+    return user;
 
   } catch (error) {  
     throw new Error('CredentialsSignin');
@@ -45,12 +46,11 @@ export const { auth, signIn, signOut } = NextAuth({
           .safeParse(credentials);
         
         if (parsedCredentials.success) {
-          const { email, password } = parsedCredentials.data;
-          const user = await getUser(email, password);
-          
-          //console.log(user);
 
-          if (!user) 
+          const { email, password } = parsedCredentials.data;
+          const user = await getUser(email, password);          
+
+          if (!user)
             return null;
           
           return user;
