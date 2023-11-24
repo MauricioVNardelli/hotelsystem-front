@@ -1,11 +1,18 @@
-import axios, { AxiosError } from 'axios';
-import { parseCookies } from 'nookies';
-import nookies from 'nookies';
+import axios from 'axios';
+import { cookies } from 'next/headers'
+
+
+function getToken() {
+  const cookieStore = cookies();
+
+  console.log(cookieStore.get('next-auth.session-token'));
+  return `Bearer ${ '' }` ; //cookieStore.get('next-auth.session-token');
+}
 
 export const api = axios.create({
     //baseURL: 'http://localhost:3333',
     baseURL: 'https://back-end-hotel.onrender.com',
     headers: {
-      Authorization: `Bearer ${ "teste 2" }`
+      Authorization: getToken()
     }
   })
