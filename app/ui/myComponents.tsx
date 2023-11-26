@@ -1,5 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import Button from '@mui/material/Button';
+import SaveIcon from '@mui/icons-material/Save';
+import { LoadingButton } from '@mui/lab';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 
 //Button
@@ -10,10 +12,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function MyButton({ type, children }: ButtonProps, loading: boolean) {	
 	let button;
 	
-	if (loading) {
-		button = 	<Button variant="contained" type={type} fullWidth>
+	if (!loading) {
+		button = 	<LoadingButton
+		          	loading
+								loadingPosition="start"
+								startIcon={<SaveIcon />}
+								variant="outlined"
+							>
 								{children}
-							</Button>
+							</LoadingButton>
 	} else {
 		button = 	<Button variant="contained" type={type} fullWidth>
 								{children}
@@ -39,7 +46,8 @@ export function MyInput(props: TextFieldProps) {
 			sx={{ marginBottom: 2 }}
 			value={props.value}
 			onChange={props.onChange}
-			helperText={props.helperText}			
+			helperText={props.helperText}
+			type={props.type}
 		/>
 	)
 }

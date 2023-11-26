@@ -68,5 +68,9 @@
 		display: flex;				
 		flex-direction: column;
 		width: 300px;
+
+		p {
+			margin-top: 15px;
+		}
 	}
 }

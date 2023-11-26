@@ -3,6 +3,7 @@
 import { useFormState } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
 import { MyButton, MyInput } from '@/app/ui/myComponents';
+import Alert from '@mui/material/Alert';
 import style from '@/app/ui/login.module.scss';
 import { lavishly_yours, lato } from '@/app/ui/fonts';
 import Image from 'next/image';
@@ -42,17 +43,18 @@ export default function Login() {
         
         <form action={formAction}>
           <MyInput placeholder="Usuário" name="email" />
-          <MyInput placeholder="Password" name="password" />
+          <MyInput placeholder="Password" name="password" type='password'/>
           <MyButton type='submit'>Entrar</MyButton>
+
+          {message === 'CredentialSignin' && 
+            (
+              <p>
+                <Alert severity="error">Usuário ou senha incorreto</Alert>
+              </p>
+            )
+          }
         </form>
-        
-        {message === 'CredentialSignin' && 
-          (
-            <p>
-              Usuário ou senha incorreto
-            </p>
-          )
-        }
+      
       </div>
     </div>
   )
