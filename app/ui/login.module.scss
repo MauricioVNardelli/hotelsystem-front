@@ -1,0 +1,72 @@
+.container {
+	display: flex;
+	height: 100vh;
+	//background-color: bisque;
+}
+
+.containerLogo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 15vh;
+	width: 44vw;
+
+	h2 {
+		font-size: 60px;
+		background: linear-gradient(180deg, #1AD1C6 0%, #6D4BA5 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	h3 {
+		font-size: 30px;
+		font-weight: 300;
+		line-height: normal;
+		height: 60px;
+		flex-shrink: 0;
+		
+		background: linear-gradient(180deg, #2CBCB3 0%, #2C1D4D 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+
+.Logo {
+	font-size: 200px;
+	background: linear-gradient(90deg, #62279D 50%, #39B0A9 73.66%, rgba(0, 0, 0, 0.00) 124%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.dividingLine {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #5993D7 43.75%, #9C2A98 56.25%, rgba(255, 255, 255, 0.00) 100%);
+	width: 2px;
+}
+
+.containerLogin {
+	display: flex;	
+	align-items: center;
+	//justify-content: center;
+	flex-direction: column;
+	font-family: Inter;
+	width: 55vw;		
+
+	img {
+		margin-top: 20vh;
+		margin-bottom: 50px;
+	}
+
+	h1 {
+		margin-bottom: 15px;
+		color: #4C5370;
+	}
+
+	form {
+		display: flex;				
+		flex-direction: column;
+		width: 300px;
+	}
+}

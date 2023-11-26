@@ -7,9 +7,23 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	//type?: string;
 }
 
-export function MyButton({ type, children }: ButtonProps) {
+export function MyButton({ type, children }: ButtonProps, loading: boolean) {	
+	let button;
+	
+	if (loading) {
+		button = 	<Button variant="contained" type={type} fullWidth>
+								{children}
+							</Button>
+	} else {
+		button = 	<Button variant="contained" type={type} fullWidth>
+								{children}
+							</Button>
+	}
+	
 	return (
-		<Button variant="contained" type={type}>{children}</Button>
+		<div>
+			{button}
+		</div>
 	)
 }
 
@@ -22,10 +36,10 @@ export function MyInput(props: TextFieldProps) {
 			label={props.placeholder} 
 			variant="outlined" 
 			size="small"
-			sx={{ marginBottom: 3 }}
+			sx={{ marginBottom: 2 }}
 			value={props.value}
 			onChange={props.onChange}
-			helperText={props.helperText}
+			helperText={props.helperText}			
 		/>
 	)
 }
