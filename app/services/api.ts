@@ -5,7 +5,6 @@ import { cookies } from 'next/headers'
 function getToken() {
   const cookieStore = cookies();
 
-  console.log(cookieStore.get('next-auth.session-token'));
   return `Bearer ${ '' }` ; //cookieStore.get('next-auth.session-token');
 }
 

@@ -1,7 +1,6 @@
 .container {
 	display: flex;
-	height: 100vh;
-	//background-color: bisque;
+	height: 100vh;	
 }
 
 .containerLogo {
@@ -49,9 +48,7 @@
 .containerLogin {
 	display: flex;	
 	align-items: center;
-	//justify-content: center;
 	flex-direction: column;
-	font-family: Inter;
 	width: 55vw;		
 
 	img {

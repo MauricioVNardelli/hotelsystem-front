@@ -19,15 +19,13 @@ async function getUser(email: string, password: string): Promise<User | undefine
     .post('/session', { email, password } )
     .then(function(response) {      
       user = <User>response.data;
-
-      console.log(response.data);
     })
     .catch(function(error) {
       const msgError = <ErrorResponse>error.response.data;
 
       console.error(msgError.error);
     });        
-
+    
     return user;
 
   } catch (error) {  
@@ -49,8 +47,6 @@ export const { auth, signIn, signOut } = NextAuth({
 
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email, password);          
-
-          console.log("Dados do usuario: ", user);
 
           if (!user)
             return null;

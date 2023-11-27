@@ -42,17 +42,16 @@ export default function Login() {
         <h1>Entrar</h1>
         
         <form action={formAction}>
-          <MyInput placeholder="Usuário" name="email" />
-          <MyInput placeholder="Password" name="password" type='password'/>
+          <MyInput name="email" placeholder="Usuário" />
+          <MyInput name="password" placeholder="Senha" type='password'/>
           <LoginButton/>
-
-          {message === 'CredentialSignin' && 
-            (
-              <Alert severity="error" sx={{marginTop: 2}}>Usuário ou senha incorreto</Alert>
-            )
-          }
         </form>
       
+        {message === 'CredentialSignin' && 
+          (
+            <Alert severity="error" sx={{marginTop: 2}}>Usuário ou senha incorreto</Alert>
+          )
+        }     
       </div>
     </div>
   )

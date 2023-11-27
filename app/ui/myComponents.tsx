@@ -12,7 +12,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function MyButton({ type, children, loading }: ButtonProps) {	
 	let button;
 	
-	console.log("My button", loading);
 	if (loading) {
 		button = 	<LoadingButton
 		          	loading
@@ -45,7 +44,8 @@ export function MyInput(props: TextFieldProps) {
 	return (
 		<TextField 
 			error={props.error}
-			id="outlined-basic" 
+			id={props.id}
+			name={props.name}
 			label={props.placeholder} 
 			variant="outlined" 
 			size="small"

@@ -18,8 +18,6 @@ export const authConfig = {
         return false; // Redirect unauthenticated users to login page      
       
       } else if (isLoggedIn) {
-        console.log("Redirencionando para dashboard");
-
         return Response.redirect(new URL('/system/dashboard', nextUrl));
       }
       
