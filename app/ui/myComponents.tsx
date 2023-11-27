@@ -6,23 +6,29 @@ import TextField, { TextFieldProps } from '@mui/material/TextField';
 
 //Button
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	//type?: string;
+	loading?: boolean
 }
 
-export function MyButton({ type, children }: ButtonProps, loading: boolean) {	
+export function MyButton({ type, children, loading }: ButtonProps) {	
 	let button;
 	
-	if (!loading) {
+	console.log("My button", loading);
+	if (loading) {
 		button = 	<LoadingButton
 		          	loading
 								loadingPosition="start"
 								startIcon={<SaveIcon />}
 								variant="outlined"
+								fullWidth
 							>
 								{children}
 							</LoadingButton>
 	} else {
-		button = 	<Button variant="contained" type={type} fullWidth>
+		button = 	<Button 
+								variant="contained" 
+								type={type} 
+								fullWidth
+							>
 								{children}
 							</Button>
 	}

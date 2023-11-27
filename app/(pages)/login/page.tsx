@@ -1,6 +1,6 @@
 'use client'
 
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
 import { MyButton, MyInput } from '@/app/ui/myComponents';
 import Alert from '@mui/material/Alert';
@@ -44,18 +44,24 @@ export default function Login() {
         <form action={formAction}>
           <MyInput placeholder="Usuário" name="email" />
           <MyInput placeholder="Password" name="password" type='password'/>
-          <MyButton type='submit'>Entrar</MyButton>
+          <LoginButton/>
 
           {message === 'CredentialSignin' && 
             (
-              <p>
-                <Alert severity="error">Usuário ou senha incorreto</Alert>
-              </p>
+              <Alert severity="error" sx={{marginTop: 2}}>Usuário ou senha incorreto</Alert>
             )
           }
         </form>
       
       </div>
     </div>
+  )
+}
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+ 
+  return (
+    <MyButton type='submit' loading={pending}>Entrar</MyButton>
   )
 }
