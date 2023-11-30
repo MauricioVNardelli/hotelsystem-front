@@ -2,7 +2,7 @@
 
 import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
-import { MyButton, MyInput } from '@/app/ui/myComponents';
+import { MyButton, MyInput } from '@/app/ui/components/myComponents';
 import Alert from '@mui/material/Alert';
 import style from '@/app/ui/login.module.scss';
 import { lavishly_yours, lato } from '@/app/ui/fonts';
