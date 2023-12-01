@@ -71,3 +71,27 @@
 		}
 	}
 }
+
+@media only screen and (max-width: 600px) {
+	.containerLogo {
+		display: none;
+	}
+
+	.Logo {
+		display: none;
+	}
+	
+	.dividingLine {
+		display: none;
+	}
+
+	.containerLogin {		
+		display: flex;
+		justify-content: center;
+		width: 100vw;
+		
+		img {
+			margin-top: 0;
+		}
+	}
+}
