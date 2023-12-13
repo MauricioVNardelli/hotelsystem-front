@@ -2,11 +2,12 @@
 
 import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
-import { MyButton, MyInput } from '@/app/ui/components/myComponents';
 import Alert from '@mui/material/Alert';
 import style from '@/app/ui/login/login.module.scss';
 import { lavishly_yours, lato } from '@/app/ui/fonts';
 import Image from 'next/image';
+import { MyInput } from '@/app/ui/components/MyInput';
+import { MyButton } from '@/app/ui/components/MyButton';
 
 export default function Login() {
   const [message, formAction] = useFormState(authenticate, undefined);

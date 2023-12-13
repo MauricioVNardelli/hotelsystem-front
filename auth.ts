@@ -1,3 +1,5 @@
+'use server'
+
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
@@ -13,6 +15,7 @@ async function getUser(email: string, password: string): Promise<User | undefine
   
   try {        
     
+    console.log("getuser login");
     let user;
 
     await api
