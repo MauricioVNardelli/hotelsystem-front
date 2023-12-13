@@ -25,6 +25,7 @@ export function MyButton({ type, children, loading }: ButtonProps) {
 								variant="contained" 
 								type={type} 
 								fullWidth
+								sx={{backgroundColor: 'var(--purple-200)'}}
 							>
 								{children}
 							</Button>

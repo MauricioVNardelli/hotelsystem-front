@@ -26,7 +26,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { CssVarsProvider } from '@mui/joy/styles';
 
 import ColorSchemeToggle from './ColorSchemeToggle';
-import { closeSidebar } from '../../utils';
+import { closeSidebar } from '../../lib/utils';
 import { signOut } from '@/auth';
 
 function Toggler({
