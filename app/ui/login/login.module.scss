@@ -74,11 +74,11 @@
 
 @media only screen and (max-width: 600px) {
 	.containerLogo {
-		display: none;
+		display: none;		
 	}
 
 	.Logo {
-		display: none;
+		display: none;		
 	}
 	
 	.dividingLine {
@@ -87,11 +87,11 @@
 
 	.containerLogin {		
 		display: flex;
-		justify-content: center;
+		margin-top: 10vh;
 		width: 100vw;
 		
 		img {
-			margin-top: 0;
+			margin-top: 0px;
 		}
 	}
 }

@@ -1,26 +1,12 @@
-export function openSidebar() {
-  if (typeof document !== 'undefined') {
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.setProperty('--SideNavigation-slideIn', '1');
-  }
-}
+import { api } from "../services/api";
 
-export function closeSidebar() {
-  if (typeof document !== 'undefined') {
-    document.documentElement.style.removeProperty('--SideNavigation-slideIn');
-    document.body.style.removeProperty('overflow');
-  }
-}
-
-export function toggleSidebar() {
-  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-    const slideIn = window
-      .getComputedStyle(document.documentElement)
-      .getPropertyValue('--SideNavigation-slideIn');
-    if (slideIn) {
-      closeSidebar();
-    } else {
-      openSidebar();
-    }
+export async function getList(prUrl: string) {
+  try {
+    const res = await api.get(prUrl);
+    
+    return res.data;
+  } 
+  catch(error) {
+    console.log('Ocorreu seguinte erro: ' + error)
   }
 }
