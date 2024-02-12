@@ -1,0 +1,31 @@
+.container {
+  background-color: #f7f7f7;
+  height: 100vh;
+  width: 230px;
+}
+
+.containerUser {
+  //background-color: aqua;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+
+  p {
+    margin-left: 8px;
+  }
+}
+
+.containerFooter {
+  width: 230px;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+
+  form {
+    display: flex;
+    height: 100%;    
+    justify-content: center;
+  }  
+}

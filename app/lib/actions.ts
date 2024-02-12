@@ -1,6 +1,7 @@
 'use server';
 
 import { signIn } from "@/auth";
+import { cookies } from 'next/headers'
  
 export async function authenticate(
   prevState: string | undefined,
@@ -17,4 +18,11 @@ export async function authenticate(
   
     throw error;
   }
+}
+
+export async function getTokenAPI() {
+  const cookieStore = cookies();
+  const tokenApi = await cookieStore.get('tokenAPI')?.value;
+
+  return `bearer ${tokenApi}`;
 }
