@@ -1,7 +1,7 @@
-import style from '@/app/ui/components/sidebar.module.scss';
+import style from '@/app/ui/components/scss/sidebar.module.scss';
 import Avatar from '@mui/joy/Avatar';
 import Divider from '@mui/joy/Divider';
-import SidebarListRegister from './register/SidebarList';
+import SidebarListRegister from './SidebarListRegister';
 import { Button } from '@mui/material';
 import { signOut } from '@/auth';
 import { auth } from '@/auth';

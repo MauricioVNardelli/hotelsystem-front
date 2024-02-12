@@ -57,7 +57,7 @@ export const { auth, signIn, signOut } = NextAuth({
             return null;
           
           //registrar token nos cookies
-          cookies().set('tokenAPI', user.token || "");
+          //cookies().set('tokenAPI', user.token || "");
           
           return user;
         }
