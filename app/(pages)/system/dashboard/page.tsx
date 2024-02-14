@@ -1,4 +1,4 @@
-import style from "@/app/ui/system/dashboard.module.scss"
+import style from "@/app/ui/components/scss/dashboard.module.scss"
 
 export default function Login() {
   return (

@@ -6,6 +6,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Typography from '@mui/material/Typography';
+import { Grid, TextField } from '@mui/material';
+import { MyInput } from './MyInput';
 
 interface MyFormProps {
   open: boolean,
@@ -37,11 +39,19 @@ export default function MyForm(props: MyFormProps) {
         </DialogTitle>
 
         <DialogContent dividers>
-          
-          <Typography gutterBottom>
-            Esta sendo apresentado o ID {props.id}
-          </Typography>
 
+        <Grid container spacing={2}>
+          
+          <Grid item xs={8}>
+            <MyInput label="Nome" placeholder='Nome' />
+          </Grid>
+          
+          <Grid item xs={4}>
+            <MyInput label="E-mail" placeholder='Email' />
+          </Grid>
+        
+        </Grid>               
+          
         </DialogContent>
         
         <DialogActions>
