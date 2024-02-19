@@ -3,7 +3,7 @@
 import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
 import Alert from '@mui/material/Alert';
-import style from '@/app/ui/login/login.module.scss';
+import style from '@/app/ui/components/scss/login.module.scss';
 import { lavishly_yours, lato } from '@/app/ui/fonts';
 import Image from 'next/image';
 import { MyInput } from '@/app/ui/components/MyInput';

@@ -24,6 +24,7 @@
     "react": "^18",
     "react-cookie": "^6.1.1",
     "react-dom": "^18",
+    "react-pro-sidebar": "^1.1.0",
     "sass": "^1.69.5",
     "zod": "^3.22.4"
   },
