@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, Button } from '@mui/material';
+import { Badge } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,7 +12,17 @@ import MailIcon from '@mui/icons-material/Mail';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
-export default function MySideapp() {
+interface MyTopbarProps {
+  setCollapsed: (value: boolean) => void;
+  valueCollapsed: boolean
+}
+
+export default function MyTopbar(props: MyTopbarProps) {
+  //const session = await auth(); {session?.user?.name}
+
+  function handleMenuClick(event: React.MouseEvent<HTMLElement>) {
+    props.setCollapsed(!props.valueCollapsed);
+  }
 
   return (
     <div>
@@ -26,11 +36,12 @@ export default function MySideapp() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
+              onClick={handleMenuClick}
             >
               <MenuIcon />
             </IconButton>
 
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography id='screenName' variant="h6" component="div" sx={{ flexGrow: 1 }}>
               [Nome da tela]
             </Typography>
 
