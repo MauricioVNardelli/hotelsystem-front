@@ -1,9 +1,20 @@
-import style from "@/app/ui/system/dashboard.module.scss"
+'use client'
 
-export default function Login() {
+import style from "@/app/ui/components/scss/dashboard.module.scss"
+import { useEffect } from "react";
+
+export default function Dashboard() {
+  
+  useEffect(() => {
+    const element = document.getElementById('screenName');
+  
+    if (element)
+      element.innerHTML = "Dashboard";
+  })
+
   return (
     <div className={style.conteiner}>
-      <h1>Dashboard</h1>      
+      <h1>Dashboard</h1>
     </div>
   )
 }

@@ -1,35 +1,33 @@
 import { useEffect, useState } from 'react';
 
-import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRowParams, ptBR } from '@mui/x-data-grid';
 import { getList, getUrlForTable } from '@/app/lib/utils';
 import { Button } from '@mui/material';
-import MyForm from './MyForm';
+
+import style from '@/app/ui/components/scss/myDataTable.module.scss'
 
 import CancelIcon from '@mui/icons-material/Cancel'
 import AddIcon from '@mui/icons-material/Add'
+import { usePathname, useRouter } from 'next/navigation';
 
 interface MyDataTableProps {
   columns: GridColDef[],
   table: string
 }
 
-let idSelected: string | number = 0;
-
 export default function MyDataTable(props: MyDataTableProps) {
   const [listRecords, setListRecords] = useState([]);
-  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter()
 
-  const handleInclude = () => {
-    idSelected = 0;
-
-    setOpen(true);
-  };
-
-  function handleCloseForm() {
-    console.log("handle close");
+  async function handleInclude() {    
     
-    setOpen(false);    
+    router.push(`${pathname}/view`)
   };
+
+  async function onGridRowDblClick(params: GridRowParams) {
+    router.push(`${pathname}/view/${params.id}`)
+  }
   
   //----------------------------------------------------
   async function getListPerson() {
@@ -51,25 +49,10 @@ export default function MyDataTable(props: MyDataTableProps) {
     getListPerson();    
   }, []);
   //----------------------------------------------------
-  
-  function onDlbClick(params: GridRowParams) {
-    setOpen(true);
 
-    idSelected = params.id;
-  }
-  
   return (
-    <div>
-      
-      <MyForm 
-        open={open}
-        table={props.table}
-        id={idSelected}
-        title='Cadastro de pessoa'
-        onHandleClose={handleCloseForm}
-      />
-
-      <div>
+    <>
+      <div className={style.ButtonPallet}>
         <Button 
           variant="contained" 
           color='success' 
@@ -83,17 +66,21 @@ export default function MyDataTable(props: MyDataTableProps) {
           variant="contained" 
           startIcon={<CancelIcon />}
           color='error'
+          disabled
         >
           Cancelar
         </Button> 
       </div>
-
-      <div style={{ height: 400, width: '100%' }}>
+      
+      <div className={style.ContainerDataGrid}>
         <DataGrid
           rows={listRecords}
           columns={props.columns}
           disableColumnMenu
-          onRowDoubleClick={onDlbClick}          
+          onRowDoubleClick={onGridRowDblClick}
+          rowHeight={30}
+          columnHeaderHeight={40}
+          localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
           
           /*initialState={{
             pagination: {
@@ -104,6 +91,6 @@ export default function MyDataTable(props: MyDataTableProps) {
           //checkboxSelection
         />
       </div>
-   </div>   
+   </>   
   );
 }
