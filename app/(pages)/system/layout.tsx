@@ -1,8 +1,9 @@
 'use client'
 
-import MySidebar from "@/app/ui/components/MySidebar";
-import style from "@/app/ui/components/scss/system.module.scss"
-import MyTopbar from "@/app/ui/components/MyTopbar";
+import style from "@/app/ui/components/scss/pages/system.module.scss"
+
+import { MySidebar } from "@/app/ui/components/MySidebar";
+import { MyTopbar } from "@/app/ui/components/MyTopbar";
 import { useState } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {

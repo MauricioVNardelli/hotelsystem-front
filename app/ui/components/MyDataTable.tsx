@@ -15,7 +15,7 @@ interface MyDataTableProps {
   table: string
 }
 
-export default function MyDataTable(props: MyDataTableProps) {
+export function MyDataTable(props: MyDataTableProps) {
   const [listRecords, setListRecords] = useState([]);
   const pathname = usePathname();
   const router = useRouter()
@@ -26,7 +26,7 @@ export default function MyDataTable(props: MyDataTableProps) {
   };
 
   async function onGridRowDblClick(params: GridRowParams) {
-    router.push(`${pathname}/view/${params.id}`)
+    router.push(`${pathname}/view?id=${params.id}`)
   }
   
   //----------------------------------------------------

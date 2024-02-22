@@ -1,8 +1,8 @@
 'use client'
 
 import { personColumnListTable } from '@/app/lib/tableColumnDefinition';
-import MyDataTable from '@/app/ui/components/MyDataTable';
-import { useEffect } from 'react';
+import { MyDataTable } from '@/app/ui/components/MyDataTable';
+import { Suspense, useEffect } from 'react';
 
 export default function PersonPage() {  
 
@@ -11,11 +11,13 @@ export default function PersonPage() {
   
     if (element)
       element.innerHTML = "Cadastro de pessoa";
-  })
+  })  
   
   return (    
     <div>
-      <MyDataTable columns={personColumnListTable} table='fi_person' />
+      <Suspense fallback={<p>Carregando...</p>}>
+        <MyDataTable columns={personColumnListTable} table='fi_person' />
+      </Suspense>
     </div>
   )
 }
