@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import style from '@/app/ui/components/scss/myForm.module.scss'
 
-export function MyForm({ children }: { children: React.ReactNode }) {
+export function MyForm({ children }: { children: React.ReactNode }, {...props}) {
   
   useEffect(() => {
     const element = document.getElementById('screenName');
@@ -14,7 +14,7 @@ export function MyForm({ children }: { children: React.ReactNode }) {
   
   return (
     <div className={style.conteiner}>
-      <form className={style.form}>
+      <form className={style.form} {...props}>
         {children}
       </form>
     </div>

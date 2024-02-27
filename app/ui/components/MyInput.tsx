@@ -1,23 +1,23 @@
 import TextField, { TextFieldProps } from '@mui/material/TextField';
+import { forwardRef } from 'react';
 
-export function MyInput(props: TextFieldProps) {
-	return (
-		<div style={{ display: 'flex', flexDirection: 'column' }} >		
-			<span>{props.placeholder}</span>
-			
-			<TextField 
-				error={props.error}
-				id={props.id}
-				name={props.name}
-				//label={props.placeholder}
-				variant="outlined" 
-				size="small"
-				sx={{ marginBottom: 2 }}
-				value={props.value}
-				onChange={props.onChange}
-				helperText={props.helperText}
-				type={props.type}
-			/>
-		</div>
+export const MyInput = forwardRef(
+	function MyInput(props: TextFieldProps, ref) {
+		const { label, ...otherProps } = props;
+		
+		return (
+			<div style={{ display: 'flex', flexDirection: 'column' }} >		
+				<p>{label}</p>
+				
+				<TextField 
+					label=""
+					variant="outlined" 
+					size="small"
+					autoComplete='off'
+					sx={{ marginBottom: 2 }}
+					{...otherProps}
+					ref={ref as any}
+				/>
+			</div>
 	)
-}
+});

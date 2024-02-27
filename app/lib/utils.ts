@@ -11,6 +11,13 @@ export async function getList(prUrl: string) {
   }
 }
 
+export async function getRegister(prtable: string, prId: string) {
+  const url = await getUrlForTable(prtable);
+  const res = await api.get(url + '?id=' + prId);
+  
+  return res.data;
+}
+
 export async function getUrlForTable(prTable: string): Promise<string> {
   switch (prTable) {
     case 'fi_person': return '/person'
