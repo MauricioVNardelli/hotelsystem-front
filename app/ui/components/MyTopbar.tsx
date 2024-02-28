@@ -1,5 +1,3 @@
-'use client'
-
 import { Badge } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,7 +15,7 @@ interface MyTopbarProps {
   valueCollapsed: boolean
 }
 
-export default function MyTopbar(props: MyTopbarProps) {
+export function MyTopbar(props: MyTopbarProps) {
   //const session = await auth(); {session?.user?.name}
 
   function handleMenuClick(event: React.MouseEvent<HTMLElement>) {
@@ -27,7 +25,7 @@ export default function MyTopbar(props: MyTopbarProps) {
   return (
     <div>
       <Box>
-        <AppBar position="relative" >
+        <AppBar position="relative" style={{ backgroundColor: '#5C68AC' }}>
           <Toolbar>
             
             <IconButton

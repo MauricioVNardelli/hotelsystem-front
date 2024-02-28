@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: {
     template: '%s | Hotel System',
-    default: 'Painel',
+    default: 'Hotel System',
   },
   description: 'Hotel System - Sistema de gestão para hotéis',
   metadataBase: new URL('http://hotelsystem.com.br/'),

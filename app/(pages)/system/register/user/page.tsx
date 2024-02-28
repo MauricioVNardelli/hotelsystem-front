@@ -9,8 +9,8 @@ export default function Cadastro_Usuario() {
   
     if (element)
       element.innerHTML = "Cadastro de usuário";
-  })
-  
+  })  
+
   return (
     <div>
       <div className="">
