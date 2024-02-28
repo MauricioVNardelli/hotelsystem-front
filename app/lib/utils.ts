@@ -18,6 +18,20 @@ export async function getRegister(prtable: string, prId: string) {
   return res.data;
 }
 
+export async function updateRegister(prtable: string, prId: string, data: object) {
+  const url = await getUrlForTable(prtable);
+  const res = await api.put(url + '?id=' + prId, data);
+  
+  return res.data;
+}
+
+export async function createRegister(prtable: string, data: object) {
+  const url = await getUrlForTable(prtable);
+  const res = await api.post(url, data);
+  
+  return res.data;
+}
+
 export async function getUrlForTable(prTable: string): Promise<string> {
   switch (prTable) {
     case 'fi_person': return '/person'

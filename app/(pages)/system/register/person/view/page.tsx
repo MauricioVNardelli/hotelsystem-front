@@ -2,35 +2,41 @@
 
 import style from '@/app/ui/components/scss/myForm.module.scss'
 import { MyInput } from "@/app/ui/components/MyInput"
-import { useSearchParams } from "next/navigation";
-import { getRegister } from "@/app/lib/utils";
-import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { createRegister, getRegister, updateRegister } from "@/app/lib/utils";
 import { Person } from '@/app/lib/definitions'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { MyButton } from '@/app/ui/components/MyButton';
 
+const table = 'fi_person';
+
 export default function PersonViewPage() {
   const searchParams = useSearchParams();
-  const [person, setPerson] = useState<Person>();
+  const router = useRouter();
   
+  const paramId = searchParams.get("id") || "";
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<Person>({ 
-    defaultValues: async () => {
+    defaultValues: async () => {     
       
-        const paramId = await searchParams.get("id") || "";
-    
-        return getRegister('fi_person', paramId);
-      
+      if (paramId)           
+        return getRegister(table, paramId);      
     }
   })  
 
-  const onSubmit: SubmitHandler<Person> = function(data) {
-    console.log("teste");
-    console.log(data)
+  const onSubmit: SubmitHandler<Person> = async function(data) {    
+
+    if (paramId)    
+      await updateRegister(table, paramId, data)
+    else
+      await createRegister(table, data);
+
+    router.push('/system/register/person');
   };
 
   return(
@@ -38,7 +44,7 @@ export default function PersonViewPage() {
       <form className={style.form} onSubmit={handleSubmit(onSubmit)} >
       
         <MyInput {...register("name")} id="name" label="Nome" />
-        <MyInput {...register("email", { required: true })} label="E-mail" />
+        <MyInput {...register("email", { required: true })} id="email" label="E-mail" />
       
         <MyButton type='submit'>Salvar</MyButton>
       </form>
