@@ -4,9 +4,10 @@ import style from '@/app/ui/components/scss/myForm.module.scss'
 import { MyInput } from "@/app/ui/components/MyInput"
 import { useSearchParams, useRouter } from "next/navigation";
 import { createRegister, getRegister, updateRegister } from "@/app/lib/utils";
-import { Person } from '@/app/lib/definitions'
+import { IPerson, TypePerson } from '@/app/lib/definitions'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { MyButton } from '@/app/ui/components/MyButton';
+import { MySelect } from '@/app/ui/components/MySelect';
 
 const table = 'fi_person';
 
@@ -21,17 +22,17 @@ export default function PersonViewPage() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Person>({ 
+  } = useForm<IPerson>({ 
     defaultValues: async () => {     
       
-      if (paramId)           
-        return getRegister(table, paramId);      
+    if (paramId)           
+      return await getRegister(table, paramId);
     }
-  })  
+  })
 
-  const onSubmit: SubmitHandler<Person> = async function(data) {    
+  const onSubmit: SubmitHandler<IPerson> = async function(data) {    
 
-    if (paramId)    
+    if (paramId)
       await updateRegister(table, paramId, data)
     else
       await createRegister(table, data);
@@ -39,11 +40,16 @@ export default function PersonViewPage() {
     router.push('/system/register/person');
   };
 
+  console.log(watch("name"));
+  
   return(
     <div className={style.conteiner}>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)} >
-      
+
+        <MySelect list={TypePerson} {...register("type")} id="type" label="Tipo" />                      
+        
         <MyInput {...register("name")} id="name" label="Nome" />
+        <MyInput {...register("surname")} id="surname" label="Apelido" />
         <MyInput {...register("email", { required: true })} id="email" label="E-mail" />
       
         <MyButton type='submit'>Salvar</MyButton>

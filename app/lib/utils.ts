@@ -11,10 +11,11 @@ export async function getList(prUrl: string) {
   }
 }
 
-export async function getRegister(prtable: string, prId: string) {
+export async function getRegister(prtable: string, prId: string): Promise<any> {
   const url = await getUrlForTable(prtable);
   const res = await api.get(url + '?id=' + prId);
   
+  console.log(res.data);
   return res.data;
 }
 
@@ -22,6 +23,7 @@ export async function updateRegister(prtable: string, prId: string, data: object
   const url = await getUrlForTable(prtable);
   const res = await api.put(url + '?id=' + prId, data);
   
+  console.log('update', data);
   return res.data;
 }
 
