@@ -1,4 +1,5 @@
 import '@/app/ui/global.scss';
+
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
 
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
     default: 'Hotel System',
   },
   description: 'Hotel System - Sistema de gestão para hotéis',
-  metadataBase: new URL('http://hotelsystem.com.br/'),
+  metadataBase: new URL('http://hotelsystem.com.br/'),  
 };
 
 export default function RootLayout({
@@ -18,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {children}
+      </body>      
     </html>
   );
 }

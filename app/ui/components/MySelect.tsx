@@ -1,55 +1,50 @@
-import { MenuItem, Select } from '@mui/material';
-import { SelectProps } from '@mui/material';
-import { forwardRef } from 'react';
+import { useEffect, useState } from 'react';
+import style from '@/app/ui/components/scss/myComponents.module.scss';
+import { getList } from '@/app/lib/utils';
+import { UseFormRegisterReturn, useFormContext } from 'react-hook-form';
 
-interface MySelectProps extends SelectProps {
-  list: Record<string, string>,
+interface MySelectProps extends React.HTMLAttributes<HTMLSelectElement> {
+  label: string,
+  table: string,
+  field: string
 }
 
-/*interface MySelectProps extends HTMLSelectElement {
-  label: string,
-  list: Record<string, string>,
-}*/
+interface ITableList {
+  id: number,
+  name: string
+}
 
-export const MySelect = forwardRef(
-  function MySelect(props: MySelectProps, ref) {		
-    const { label, ...otherProps } = props;
+export function MySelect(props: MySelectProps) {
+  const { label, table, field, ...otherProps } = props;
+  const [listValue, setListValue] = useState<JSX.Element[]>([<option key={0} value={0} placeholder='No values' ></option>]);
+  const { register } = useFormContext();
 
-    /*const listValue = Object.entries(props.list).map(([key, value]) => {
-      return <option key={key} value={key}>{value}</option>
-    })*/
-
-    const listValue = Object.entries(props.list).map(([key, value]) => {
-      return <MenuItem key={key} value={key}>{value}</MenuItem>
-    })
-
-		return (
-			<div style={{ display: 'flex', flexDirection: 'column' }} >		
-				<p>{label}</p>
-				
-        <Select
-          ref={ref as any}
-          size='small'
-          defaultValue={''}
-          sx={{ marginBottom: 2 }}
-          {...otherProps}          
-        >
-          {listValue}
-        </Select>
-			</div>
-	  )
+  async function getValues() {
+    console.log('função getValues');
     
-    /*return (
-			<div style={{ display: 'flex', flexDirection: 'column' }} >		
-				<p>{label}</p>
-				
-        <select
-          ref={ref as any}
-          {...otherProps}          
-        >
-          {listValue}
-        </select>
-			</div>
-	  )*/
+    const result: ITableList[] = await getList(`/table?table=${table}`);    
+        
+    if (result.length > 0)  {
+      const value = result.map((value) => {
+        return <option key={value.id} value={value.id}>{value.name}</option>
+      })
+
+      setListValue(value);
+    }    
   }
-);
+
+  useEffect(() => {
+    console.log('Passou no useEffect', props.label);
+
+    getValues();
+  }, []);
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }} >		
+      <p>{label}</p>
+      <select className={style.select} {...register(field, {valueAsNumber: true})} {...otherProps} >
+        {listValue}
+      </select>
+    </div>
+  )
+};

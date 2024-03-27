@@ -1,0 +1,24 @@
+.baseStyle {
+  height: 35px;
+  border-radius: 4px;
+  align-items: center;
+  padding-left: 10px;
+  border-color: rgba(0, 0, 0, 0.23);
+  border-width: 1px;
+
+  &:hover {
+    border-color: var(--gray-200);    
+  }
+}
+
+.select {
+  @extend .baseStyle;
+
+  option {
+    height: 40px;
+  }
+}
+
+.input {
+  @extend .baseStyle;  
+}

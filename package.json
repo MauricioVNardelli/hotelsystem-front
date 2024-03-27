@@ -11,9 +11,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@maskito/core": "^2.2.0",
+    "@maskito/react": "^2.2.0",
     "@mui/icons-material": "^5.15.9",
-    "@mui/joy": "^5.0.0-beta.15",
-    "@mui/lab": "^5.0.0-alpha.153",
+    "@mui/lab": "^5.0.0-alpha.169",
     "@mui/material": "^5.14.17",
     "@mui/x-data-grid": "^6.19.4",
     "axios": "^1.6.0",
@@ -33,6 +34,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-input-mask": "^3.0.5",
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
     "typescript": "^5"

@@ -31,12 +31,12 @@ export function MyDataTable(props: MyDataTableProps) {
   
   //----------------------------------------------------
   async function getListPerson() {
-
-    const rote = await getUrlForTable(props.table);
+    const route = await getUrlForTable(props.table);
+    
     let listRecords = [];
 
-    if (rote !== '')
-      listRecords = await getList( rote );
+    if (route !== '')
+      listRecords = await getList( route );
     
     if (!listRecords) {
       return
