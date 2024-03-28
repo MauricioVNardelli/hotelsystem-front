@@ -20,7 +20,7 @@ export function MySelect(props: MySelectProps) {
   const { register } = useFormContext();
 
   async function getValues() {
-    console.log('função getValues');
+    //console.log('função getValues');
     
     const result: ITableList[] = await getList(`/table?table=${table}`);    
         
@@ -34,7 +34,7 @@ export function MySelect(props: MySelectProps) {
   }
 
   useEffect(() => {
-    console.log('Passou no useEffect', props.label);
+    //console.log('Passou no useEffect', props.label);
 
     getValues();
   }, []);

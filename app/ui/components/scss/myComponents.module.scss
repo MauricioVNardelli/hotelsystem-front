@@ -3,11 +3,15 @@
   border-radius: 4px;
   align-items: center;
   padding-left: 10px;
-  border-color: rgba(0, 0, 0, 0.23);
-  border-width: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
 
   &:hover {
-    border-color: var(--gray-200);    
+    border-color: var(--gray-200);
+  }
+
+  &:focus {
+    border-width: 2px;
+    border-color: var(--purple-200);
   }
 }
 

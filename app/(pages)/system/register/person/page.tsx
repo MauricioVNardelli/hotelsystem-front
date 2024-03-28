@@ -2,16 +2,15 @@
 
 import { personColumnListTable } from '@/app/lib/tableColumnDefinition';
 import { MyDataTable } from '@/app/ui/components/MyDataTable';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useContext, useEffect } from 'react';
+import { PageNameContext } from '../../layout';
 
-export default function PersonPage() {  
+export default function PersonPage() {
+  const { setPageName } = useContext(PageNameContext);
 
   useEffect(() => {
-    const element = document.getElementById('screenName');
-  
-    if (element)
-      element.innerHTML = "Cadastro de pessoa";
-  })  
+    setPageName("Cadastro de pessoa");
+  }, [])
   
   return (    
     <div>

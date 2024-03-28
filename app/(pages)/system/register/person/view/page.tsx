@@ -9,21 +9,20 @@ import { IPerson } from '@/app/lib/definitions'
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form"
 import { MyButton } from '@/app/ui/components/MyButton';
 import { MySelect } from '@/app/ui/components/MySelect';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { PageNameContext } from '../../../layout';
 
 const table = 'fi_person';
 
 export default function PersonViewPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { setPageName } = useContext(PageNameContext);
   
   const paramId = searchParams.get("id") || "";
 
   useEffect(() => {
-    const element = document.getElementById('screenName');
-  
-    if (element)
-      element.innerHTML = "Pessoa";
+    setPageName("Pessoa");
   }, [])
 
   const form = useForm<IPerson>({ 
