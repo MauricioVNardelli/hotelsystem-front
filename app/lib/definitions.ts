@@ -20,3 +20,5 @@ export interface IPerson {
   create_at: string
   update_at: string
 };
+
+export type typeMask = "cep" | "cpf" | "cnpj" | "date" | "tel" | "cel" | undefined;

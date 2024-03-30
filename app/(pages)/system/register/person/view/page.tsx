@@ -2,7 +2,7 @@
 
 import style from '@/app/ui/components/scss/myForm.module.scss'
 import Grid from '@mui/material/Unstable_Grid2';
-import { MyInput } from "@/app/ui/components/MyInput"
+import { MyInputForm } from "@/app/ui/components/MyInputForm"
 import { useSearchParams, useRouter } from "next/navigation";
 import { createRegister, getRegister, updateRegister } from "@/app/lib/utils";
 import { IPerson } from '@/app/lib/definitions'
@@ -53,11 +53,11 @@ export default function PersonViewPage() {
             {/*-------LINE 1------------*/}          
 
             <Grid xs={7}>
-              <MyInput field="name" id="name" label="Nome" />
+              <MyInputForm field="name" id="name" label="Nome" />
             </Grid>
               
             <Grid xs={5}>
-              <MyInput field="surname" id="surname" label="Apelido" />
+              <MyInputForm field="surname" id="surname" label="Apelido" />
             </Grid>
             
             {/*-------LINE 2------------*/}          
@@ -66,17 +66,17 @@ export default function PersonViewPage() {
             </Grid>
                 
             <Grid xs={6}>            
-              <MyInput field="email" id="email" label="E-mail" />                
+              <MyInputForm field="email" id="email" label="E-mail" />                
             </Grid> 
 
             <Grid xs={3}>            
-              <MyInput field="RG" id="rg" label="RG" />
+              <MyInputForm field="RG" id="rg" label="RG" />
             </Grid>  
 
             {/*-------LINE 3------------*/}
 
             <Grid xs={3}>              
-              <MyInput
+              <MyInputForm
                 field="CPF_CNPJ" 
                 id="cpfcnpj" 
                 label="CPF/CNPJ" 
@@ -85,7 +85,7 @@ export default function PersonViewPage() {
             </Grid>
 
             <Grid xs={3}>
-              <MyInput field="IE" id="ie" label="I.E" />
+              <MyInputForm field="IE" id="ie" label="I.E" />
             </Grid>
 
             <Grid xs={3}>
@@ -93,7 +93,7 @@ export default function PersonViewPage() {
             </Grid>
 
             <Grid xs={3}>
-              <MyInput field="telephone" id="telephone" label="Telefone" mask={'tel'} />
+              <MyInputForm field="telephone" id="telephone" label="Telefone" mask={'tel'} />
             </Grid>
           
           </Grid>
