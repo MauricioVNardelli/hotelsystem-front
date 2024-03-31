@@ -6,6 +6,6 @@ export const api = axios.create({
   baseURL: 'https://back-end-hotel.onrender.com',
   headers: {
     //Authorization: `Bearer ${parseCookies()['tokenAPI']}`
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWF1cmljaW8gTmFyZGVsbGkiLCJlbWFpbCI6Im1hdW5hcmRlbGxpQGdtYWlsLmNvbSIsImlhdCI6MTcwNzQ3Mzg3OSwiZXhwIjoxNzEwMDY1ODc5LCJzdWIiOiIxIn0.ZdTCczDUHbIvAXlPyWmYiQQlMLq8SpIV4_G2cFew3kM'
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWF1cmljaW8gTmFyZGVsbGkiLCJlbWFpbCI6Im1hdW5hcmRlbGxpQGdtYWlsLmNvbSIsImlhdCI6MTcxMDcwOTAwNCwiZXhwIjoxNzEzMzAxMDA0LCJzdWIiOiIxIn0.VInhQgiImw91TWZMQz6iCdnpGHnhPBzRnqL49DCvt6k'
   }
 })

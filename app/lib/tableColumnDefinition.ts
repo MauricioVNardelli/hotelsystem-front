@@ -13,6 +13,16 @@ export const personColumnListTable: GridColDef[] = [
     width: 250    
   },
   {
+    field: 'type|name',
+    headerName: 'Tipo',
+    width: 100    
+  },
+  {
+    field: 'CPF_CNPJ',
+    headerName: 'CPF/CNPJ',
+    width: 150    
+  },
+  {
     field: 'email',
     headerName: 'E-mail',
     width: 250    

@@ -9,6 +9,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MailIcon from '@mui/icons-material/Mail';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useContext } from 'react';
+import { PageNameContext } from '@/app/(pages)/system/layout';
 
 interface MyTopbarProps {
   setCollapsed: (value: boolean) => void;
@@ -17,6 +19,7 @@ interface MyTopbarProps {
 
 export function MyTopbar(props: MyTopbarProps) {
   //const session = await auth(); {session?.user?.name}
+  const { pageName } = useContext(PageNameContext);
 
   function handleMenuClick(event: React.MouseEvent<HTMLElement>) {
     props.setCollapsed(!props.valueCollapsed);
@@ -40,7 +43,7 @@ export function MyTopbar(props: MyTopbarProps) {
             </IconButton>
 
             <Typography id='screenName' variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              [Nome da tela]
+              {pageName}
             </Typography>
 
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
