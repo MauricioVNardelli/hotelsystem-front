@@ -1,11 +1,16 @@
+export type SignInData = {
+  email: string;
+  password: string;
+}
+
 export type User = {
   id: string
-  name?: string | null
-  email?: string | null
-  token?: string | null
+  name: string
+  email: string
+  token: string
 };
 
-export interface IPerson {
+export type Person = {
   id: number
   name: string
   email: string | null

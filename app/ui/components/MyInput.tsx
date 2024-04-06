@@ -26,6 +26,7 @@ export function MyInput(props: MyInputProps) {
       <p>{label}</p>
       <input 
         className={style.input}
+        autoComplete='off'
         ref={(el) => {
           if (mask) 
             inputRef(el);

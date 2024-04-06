@@ -1,7 +1,6 @@
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import MenuItemRegister from './sidebar/MenuItemRegister';
 import style from '@/app/ui/components/scss/mySidebar.module.scss';
-import { signOut } from '@/auth';
 import { Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
@@ -29,7 +28,7 @@ export function MySidebar(props: MySidebarProps) {
           <div className={style.containerFooter}>                                      
             <form action={async () => {
               
-              await signOut()
+              alert('Implementar :)')
             }}>            
               <Button type='submit'><LogoutIcon /></Button>
             </form>

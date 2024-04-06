@@ -1,9 +1,18 @@
-import NextAuth from 'next-auth';
-import { authConfig } from './auth.config';
+import type { NextRequest } from 'next/server'
  
-export default NextAuth(authConfig).auth;
+export function middleware(request: NextRequest) {  
+  const cookie = request.cookies.get('hotelsystem.token');
+  const token = cookie?.value;
+ 
+  if (token && !request.nextUrl.pathname.startsWith('/system')) {
+    return Response.redirect(new URL('/system/dashboard', request.url))
+  }
+ 
+  if (!token && !request.nextUrl.pathname.startsWith('/login')) {
+    return Response.redirect(new URL('/login', request.url))
+  }
+}
  
 export const config = {
-  // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
-  matcher: ['/((?!api|_next/static|_next/image|.png).*)'],
-};
+  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+}

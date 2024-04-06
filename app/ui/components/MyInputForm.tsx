@@ -30,6 +30,7 @@ export function MyInputForm(props: MyInputProps) {
       <p>{label}</p>
       <input 
         className={style.input}
+        autoComplete='off'
         ref={el => {          
           refRegister(el);
           

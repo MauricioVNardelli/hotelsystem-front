@@ -3,16 +3,38 @@
 import style from '@/app/ui/components/scss/pages/login.module.scss';
 
 import { useFormState, useFormStatus } from 'react-dom';
-import { authenticate } from '@/app/lib/actions';
 import { lavishly_yours, lato } from '@/app/ui/fonts';
 import Image from 'next/image';
 import Alert from '@mui/material/Alert';
 
 import { MyInput } from '@/app/ui/components/MyInput';
 import { MyButton } from '@/app/ui/components/MyButton';
+import { useContext } from 'react';
+import { AuthContext } from '@/app/contexts/AuthContext';
+import { SignInData } from '@/app/lib/definitions';
 
 export default function Login() {
   const [message, formAction] = useFormState(authenticate, undefined);
+  const { signIn } = useContext(AuthContext);
+
+  async function authenticate(
+    prevState: string | undefined,
+    formData: FormData,
+  ) {
+    const data = Object.fromEntries(formData) as SignInData;
+  
+    try {
+      await signIn(data);
+    
+    } catch (error) {
+  
+      if ((error as Error).message.includes('CredentialsSignin')) {
+        return 'CredentialSignin';
+      }
+    
+      throw error;
+    }
+  }
 
   return (
     <div className={style.container}>
@@ -52,7 +74,12 @@ export default function Login() {
       
         {message === 'CredentialSignin' && 
           (
-            <Alert severity="error" sx={{marginTop: 2}}>Usuário ou senha incorreto</Alert>
+            <Alert 
+              severity="error" 
+              sx={{marginTop: 2}}
+            >
+              Usuário ou senha incorreto
+            </Alert>
           )
         }     
       </div>

@@ -2,10 +2,10 @@
 
 import style from '@/app/ui/components/scss/myForm.module.scss'
 import Grid from '@mui/material/Unstable_Grid2';
+import { type Person } from '@/app/lib/definitions'
 import { MyInputForm } from "@/app/ui/components/MyInputForm"
 import { useSearchParams, useRouter } from "next/navigation";
 import { createRegister, getRegister, updateRegister } from "@/app/lib/utils";
-import { IPerson } from '@/app/lib/definitions'
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form"
 import { MyButton } from '@/app/ui/components/MyButton';
 import { MySelect } from '@/app/ui/components/MySelect';
@@ -25,7 +25,7 @@ export default function PersonViewPage() {
     setPageName("Pessoa");
   }, [])
 
-  const form = useForm<IPerson>({ 
+  const form = useForm<Person>({ 
     defaultValues: 
       async () => {           
         if (paramId) {
@@ -34,7 +34,7 @@ export default function PersonViewPage() {
     }
   })
 
-  const onSubmit: SubmitHandler<IPerson> = async function(data) {    
+  const onSubmit: SubmitHandler<Person> = async function(data) {    
 
     if (paramId)
       await updateRegister(table, paramId, data)

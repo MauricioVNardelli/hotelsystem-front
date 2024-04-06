@@ -2,6 +2,7 @@ import '@/app/ui/global.scss';
 
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
+import { AuthProvider } from './contexts/AuthContext';
 
 export const metadata: Metadata = {
   title: {
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.className} antialiased`}>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>      
     </html>
   );

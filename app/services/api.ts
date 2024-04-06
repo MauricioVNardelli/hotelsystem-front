@@ -1,11 +1,19 @@
-import axios from 'axios';
-//import { parseCookies } from 'nookies';
+import axios, { AxiosInstance } from "axios";
+import { parseCookies } from "nookies";
 
-export const api = axios.create({
-  //baseURL: 'http://localhost:3333',
-  baseURL: 'https://back-end-hotel.onrender.com',
-  headers: {
-    //Authorization: `Bearer ${parseCookies()['tokenAPI']}`
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWF1cmljaW8gTmFyZGVsbGkiLCJlbWFpbCI6Im1hdW5hcmRlbGxpQGdtYWlsLmNvbSIsImlhdCI6MTcxMDcwOTAwNCwiZXhwIjoxNzEzMzAxMDA0LCJzdWIiOiIxIn0.VInhQgiImw91TWZMQz6iCdnpGHnhPBzRnqL49DCvt6k'
+function getAPIClient(): AxiosInstance {
+  const { 'hotelsystem.token': token } = parseCookies()
+
+  const api = axios.create({
+    //baseURL: 'http://localhost:3333'
+    baseURL: 'https://back-end-hotel.onrender.com'
+  })
+
+  if (token) {
+    api.defaults.headers['Authorization'] = `Bearer ${token}`;
   }
-})
+
+  return api;
+}
+
+export const api = getAPIClient();
