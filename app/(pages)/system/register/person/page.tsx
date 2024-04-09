@@ -1,9 +1,9 @@
 'use client'
 
-import { personColumnListTable } from '@/app/lib/tableColumnDefinition';
 import { MyDataTable } from '@/app/ui/components/MyDataTable';
 import { Suspense, useContext, useEffect } from 'react';
 import { PageNameContext } from '../../layout';
+import { GridColDef } from '@mui/x-data-grid';
 
 export default function PersonPage() {
   const { setPageName } = useContext(PageNameContext);
@@ -20,3 +20,32 @@ export default function PersonPage() {
     </div>
   )
 }
+
+const personColumnListTable: GridColDef[] = [
+  {
+    field: 'id',
+    headerName: 'Cód',
+    align: "right",
+    width: 20,
+  },
+  {
+    field: 'name',
+    headerName: 'Nome',
+    width: 250    
+  },
+  {
+    field: 'typeId',
+    headerName: 'Tipo',
+    width: 100    
+  },
+  {
+    field: 'CPF_CNPJ',
+    headerName: 'CPF/CNPJ',
+    width: 150    
+  },
+  {
+    field: 'email',
+    headerName: 'E-mail',
+    width: 250    
+  }
+]

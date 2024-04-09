@@ -6,16 +6,17 @@ import type { MaskitoOptions } from '@maskito/core';
 import { useMaskito } from '@maskito/react';
 import { getMask } from '@/app/lib/utils';
 import { typeMask } from '@/app/lib/definitions';
+import { red } from '@mui/material/colors';
 
 interface MyInputProps extends ComponentProps<'input'> {
   label: string,
   field: string,
-  isRequired?: boolean,
+  isRequired?: boolean | undefined,
   mask?: typeMask
 }
 
 export function MyInputForm(props: MyInputProps) {
-  const { label, mask, field, ...otherProps } = props;
+  const { label, mask, field, isRequired, ...otherProps } = props;
   const { register } = useFormContext();
   const { ref: refRegister, ...otherRegister } = register(field);
 
@@ -23,15 +24,20 @@ export function MyInputForm(props: MyInputProps) {
     mask: getMask(mask)
   }
 
+  otherRegister.required = props.isRequired;
+
   const inputRef = useMaskito({ options: digitsOnlyMask })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>      
-      <p>{label}</p>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <p>{label}</p>
+        {isRequired && <p style={{color: '#c9300e'}}>&nbsp;*</p>}
+      </div>
       <input 
         className={style.input}
         autoComplete='off'
-        ref={el => {          
+        ref={el => {
           refRegister(el);
           
           if (mask) 

@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-
-import { DataGrid, GridColDef, GridRowParams, ptBR } from '@mui/x-data-grid';
-import { getList, getUrlForTable } from '@/app/lib/utils';
-import { Button } from '@mui/material';
-
+import { usePathname, useRouter } from 'next/navigation';
 import style from '@/app/ui/components/scss/myDataTable.module.scss'
 
+import { DataGrid, GridColDef, GridRowParams, ptBR } from '@mui/x-data-grid';
+import { Button } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel'
 import AddIcon from '@mui/icons-material/Add'
-import { usePathname, useRouter } from 'next/navigation';
+
+import { getList } from '@/app/lib/utils';
 
 interface MyDataTableProps {
   columns: GridColDef[],
@@ -20,33 +19,27 @@ export function MyDataTable(props: MyDataTableProps) {
   const pathname = usePathname();
   const router = useRouter()
 
-  async function handleInclude() {    
-    
+  function handleInclude() {    
     router.push(`${pathname}/view`)
   };
 
-  async function onGridRowDblClick(params: GridRowParams) {
+  function onGridRowDblClick(params: GridRowParams) {
     router.push(`${pathname}/view?id=${params.id}`)
   }
   
   //----------------------------------------------------
-  async function getListPerson() {
-    const route = await getUrlForTable(props.table);
+  async function getRecordForDataGrid() {
+    const listRecord = await getList( props.table );
     
-    let listRecords = [];
-
-    if (route !== '')
-      listRecords = await getList( route );
-    
-    if (!listRecords) {
-      return
+    if (!listRecord) {
+      return {}
     }
 
-    setListRecords(listRecords);
+    setListRecords(listRecord);
   }
   
   useEffect(() => {    
-    getListPerson();    
+    getRecordForDataGrid();    
   }, []);
   //----------------------------------------------------
 

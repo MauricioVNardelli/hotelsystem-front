@@ -21,7 +21,8 @@ export function MyButton({ type, children, loading }: ButtonProps) {
 								{children}
 							</LoadingButton>
 	} else {
-		button = 	<Button 
+		button = 	<Button
+								id="myButton"
 								variant="contained" 
 								type={type} 
 								fullWidth

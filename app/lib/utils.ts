@@ -2,11 +2,23 @@ import { MaskitoMask } from "@maskito/core";
 import { api } from "../services/api";
 import { typeMask } from "./definitions";
 
-export async function getList(prUrl: string) {
+//-- PUBLIC
+
+export async function getList(prTable: string, prUrl?: string) {
   try {
-    const res = await api.get(prUrl);
-    
-    return res.data;
+    let url = prUrl;
+
+    if (!url) {
+      url = await getUrlForTable(prTable);
+    }
+
+    if (url) {
+      const res = await api.get(url);
+      
+      return res.data;
+    }
+
+    return {};
   } 
   catch(error) {
     console.log('Ocorreu seguinte erro: ' + error)
@@ -17,7 +29,6 @@ export async function getRegister(prtable: string, prId: string) {
   const url = await getUrlForTable(prtable);
   const res = await api.get(url + '?id=' + prId);
   
-  //console.log(res.data);
   return res.data;
 }
 
@@ -34,13 +45,6 @@ export async function createRegister(prtable: string, data: object) {
   const res = await api.post(url, data);
   
   return res.data;
-}
-
-export async function getUrlForTable(prTable: string): Promise<string> {
-  switch (prTable) {
-    case 'fi_person': return '/person'
-    default: return ''
-  }
 }
 
 export function getMask(prValueType: typeMask): MaskitoMask {
@@ -65,4 +69,12 @@ export function getMask(prValueType: typeMask): MaskitoMask {
   }
 
   return maskArr;
+}
+
+//-- PRIVATE
+async function getUrlForTable(prTable: string): Promise<string> {
+  switch (prTable) {
+    case 'fi_person': return '/person'
+    default: return ''
+  }
 }

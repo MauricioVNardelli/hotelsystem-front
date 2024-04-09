@@ -1,4 +1,6 @@
 import '@/app/ui/global.scss';
+import '@mantine/core/styles.css';
+import { MantineProvider } from '@mantine/core';
 
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
@@ -21,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.className} antialiased`}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <MantineProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </MantineProvider>
       </body>      
     </html>
   );

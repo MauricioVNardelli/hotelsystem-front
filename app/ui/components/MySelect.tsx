@@ -9,7 +9,7 @@ interface MySelectProps extends React.HTMLAttributes<HTMLSelectElement> {
   field: string
 }
 
-interface ITableList {
+type TableList = {
   id: number,
   name: string
 }
@@ -20,22 +20,18 @@ export function MySelect(props: MySelectProps) {
   const { register } = useFormContext();
 
   async function getValues() {
-    //console.log('função getValues');
-    
-    const result: ITableList[] = await getList(`/table?table=${table}`);    
-        
+    const result: TableList[] = await getList('', `/table?table=${table}`);    
+
     if (result.length > 0)  {
       const value = result.map((value) => {
         return <option key={value.id} value={value.id}>{value.name}</option>
       })
-
+      
       setListValue(value);
     }    
   }
 
   useEffect(() => {
-    //console.log('Passou no useEffect', props.label);
-
     getValues();
   }, []);
   
