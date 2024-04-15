@@ -31,7 +31,7 @@ const personColumnListTable: GridColDef[] = [
   {
     field: 'name',
     headerName: 'Nome',
-    width: 250    
+    width: 500    
   },
   {
     field: 'typeId',

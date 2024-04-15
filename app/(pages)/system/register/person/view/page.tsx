@@ -96,6 +96,7 @@ export default function PersonViewPage() {
           <Tabs defaultValue='complemento' variant='outline' style={{marginTop: "10px"}}>
             <Tabs.List>
               <Tabs.Tab value="complemento">Complemento</Tabs.Tab>
+              <Tabs.Tab value="endereco">Endereço</Tabs.Tab>
             </Tabs.List>
             
             { 

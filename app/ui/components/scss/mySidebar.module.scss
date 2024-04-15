@@ -1,17 +1,6 @@
 .container {
   //background-color: #f7f7f7;
-  height: 100vh;
-  width: 230px;
-}
-
-.containerFooter {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
   display: flex;
-  justify-content: center;
-  
-  form {
-    margin-bottom: 15px;
-  }
+  height: 100%;
+  //width: 230px;
 }

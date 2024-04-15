@@ -1,20 +1,18 @@
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import MenuItemRegister from './sidebar/MenuItemRegister';
 import style from '@/app/ui/components/scss/mySidebar.module.scss';
-import { Button } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
 import Link from 'next/link';
 import GridViewIcon from '@mui/icons-material/GridView';
 
-interface MySidebarProps {
+interface MySidebarProps extends React.RefAttributes<HTMLHtmlElement> {
   valueCollapsed: boolean
 }
 
 export function MySidebar(props: MySidebarProps) {
   return (   
-    <div>
-      <Sidebar width='200px' collapsed={props.valueCollapsed} rootStyles={{ height: '100%' }} >
-        <Menu rootStyles={{ height: '100%' }}>
+    <div className={style.container}>
+      <Sidebar width='200px' collapsed={props.valueCollapsed} {...props} >
+        <Menu>
 
           <MenuItem 
             component={<Link href="/system/dashboard" />} 
@@ -23,16 +21,8 @@ export function MySidebar(props: MySidebarProps) {
             Dashboard
           </MenuItem>
           
-          <MenuItemRegister />     
+          <MenuItemRegister />
 
-          <div className={style.containerFooter}>                                      
-            <form action={async () => {
-              
-              alert('Implementar :)')
-            }}>            
-              <Button type='submit'><LogoutIcon /></Button>
-            </form>
-          </div>
         </Menu>
       </Sidebar> 
     </div>
