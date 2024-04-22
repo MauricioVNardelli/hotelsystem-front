@@ -17,25 +17,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
   const [pageName, setPageName] = useState("Nome da tela");
 
+  const widthSideBar = collapsed ? 80 : 200;
+
   return (
     <PageNameContext.Provider value={{ pageName, setPageName }}>      
-      <div style={{minHeight: '100vh', display: 'flex', flexDirection: 'column'}}>
+      <div style={{height: '100%', display: 'flex', flexDirection: 'column'}}>
         <div>
           <MyTopbar setCollapsed={setCollapsed} valueCollapsed={collapsed} />
         </div>
 
-        <div style={{flex: '1'}}>
-          <div className={style.container}>
-            <div className={style.sidebar}>
-              <MySidebar valueCollapsed={collapsed} /> 
-            </div>
-            
-            <div className={style.content}>
-              {children}
-            </div>
+        <div className={style.container}>
+          <div className={style.sidebar}>
+            <MySidebar valueCollapsed={collapsed} /> 
+          </div>
+          
+          <div style={{maxWidth: `calc(100% - ${widthSideBar}px)`}} className={style.content}>
+            {children}
           </div>
         </div>
-
       </div>
     </PageNameContext.Provider>
   );
