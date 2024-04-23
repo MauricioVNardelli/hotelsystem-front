@@ -32,12 +32,12 @@ export default function PersonViewPage() {
           return await getRegister(table, paramId);
       }
     }
-  });
-
-  const typePersonIsCPF = form.getValues().typeId == 1;
+  });  
   
   //Força renderizar ao alterar
   form.watch(['typeId'])[0];
+
+  const typePersonIsCPF = form.getValues().typeId == 1;
 
   const onSubmit: SubmitHandler<Person> = async function(data) {    
 
@@ -79,7 +79,7 @@ export default function PersonViewPage() {
 
             <Grid xs={4}>              
               <MyInputForm
-                field="CPF_CNPJ"
+                field="cpf_cnpj"
                 id="cpfcnpj" 
                 label="CPF/CNPJ"
                 isRequired
@@ -93,16 +93,14 @@ export default function PersonViewPage() {
 
           </Grid>
 
-          <Tabs defaultValue='complemento' variant='outline' style={{marginTop: "10px"}}>
-            <Tabs.List>
-              <Tabs.Tab value="complemento">Complemento</Tabs.Tab>
-              <Tabs.Tab value="endereco">Endereço</Tabs.Tab>
-            </Tabs.List>
-            
-            { 
-              typePersonIsCPF ? tabComplementoFisica() : tabComplementoJuridica() 
-            }
+          { 
+            typePersonIsCPF ? tabComplementoFisica() : tabComplementoJuridica() 
+          }
 
+          <Tabs defaultValue='endereco' variant='outline' style={{marginTop: "10px"}}>
+            <Tabs.List>              
+              <Tabs.Tab value="endereco">Endereço</Tabs.Tab>
+            </Tabs.List>            
           </Tabs>
 
           <MyButton type='submit'>Salvar</MyButton>
@@ -114,40 +112,46 @@ export default function PersonViewPage() {
 
 function tabComplementoFisica(): React.ReactNode {
   return (
-    <Tabs.Panel value="complemento" pt="xs">
-      <Grid container spacing={1}>
-        
-        <Grid xs={3}>
-          <MyInputForm field="telephone" id="telephone" label="Telefone" mask={'tel'} />
-        </Grid>     
+    <Grid container spacing={1}>
+      
+      <Grid xs={4}>
+        <MyInputForm field="telephone" id="telephone" label="Telefone" mask={'tel'} />
+      </Grid>     
 
-        <Grid xs={9}>
-          <MyInputForm field="RG" id="rg" label="RG" />
-        </Grid>
-
+      <Grid xs={8}>
+        <MyInputForm field="rg" id="rg" label="RG" />
       </Grid>
-    </Tabs.Panel>
+
+    </Grid>
   )
 }
 
 function tabComplementoJuridica(): React.ReactNode {
   return (
-    <Tabs.Panel value="complemento" pt="xs">
-      <Grid container spacing={1}>
-        
-        <Grid xs={4}>
-          <MyInputForm field="IE" id="ie" label="I.E" />
-        </Grid>
+    <Grid container spacing={1}>
+      
+      <Grid xs={4}>
+        <MyInputForm field="ie" id="ie" label="I.E" />
+      </Grid>
 
-        <Grid xs={4}>
-          <MySelect field="typeCompanyId" id="typeCompanyId" table='fi_typecompany' label='Tipo de empresa' />
-        </Grid>
+      <Grid xs={4}>
+        <MySelect 
+          field="typeCompanyId" 
+          id="typeCompanyId" 
+          table='fi_typecompany' 
+          label='Tipo de empresa' 
+        />
+      </Grid>
 
-        <Grid xs={4}>
-          <MyInputForm field="telephone" id="telephone" label="Telefone" mask={'tel'} />
-        </Grid>         
+      <Grid xs={4}>
+        <MyInputForm 
+          field="telephone" 
+          id="telephone" 
+          label="Telefone" 
+          mask={'tel'} 
+        />
+      </Grid>         
 
-      </Grid>              
-    </Tabs.Panel>
+    </Grid>
   )
 }

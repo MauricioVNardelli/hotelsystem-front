@@ -14,9 +14,9 @@ export type Person = {
   id: number
   name: string
   email: string | null
-  CPF_CNPJ: string | null
-  IE: string | null
-  RG: string | null
+  cpf_cnpj: string | null
+  ie: string | null
+  rg: string | null
   telephone: string | null
   responsiblePersonId: number | null
   surname: string | null
