@@ -1,14 +1,12 @@
-//import TextField, { TextFieldProps } from '@mui/material/TextField';
-import { ComponentProps } from 'react';
-import style from '@/app/ui/components/scss/myComponents.module.scss';
 import type { MaskitoOptions } from '@maskito/core';
 import { useMaskito } from '@maskito/react';
 import { getMask } from '@/app/lib/utils';
 import { typeMask } from '@/app/lib/definitions';
+import { Input, InputProps } from '@mantine/core';
 
-interface MyInputProps extends ComponentProps<'input'> {
+interface MyInputProps extends InputProps {
   label: string,
-  isRequired?: boolean,
+//  isRequired?: boolean,
   mask?: typeMask
 }
 
@@ -22,17 +20,15 @@ export function MyInput(props: MyInputProps) {
   const inputRef = useMaskito({ options: digitsOnlyMask })
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>      
-      <p>{label}</p>
-      <input 
-        className={style.input}
-        autoComplete='off'
+    <Input.Wrapper label={label} description="" error="">      
+      <Input         
+        autoComplete='off'        
         ref={(el) => {
           if (mask) 
             inputRef(el);
         }}
         {...otherProps}
       />
-    </div>
+    </Input.Wrapper>
   )
 };

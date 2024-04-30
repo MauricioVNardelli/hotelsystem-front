@@ -38,3 +38,7 @@ next-env.d.ts
 
 # env files
 .env
+
+# others
+*.txt
+/backup

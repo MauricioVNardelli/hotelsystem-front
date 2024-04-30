@@ -1,6 +1,6 @@
 'use client'
 
-import style from "@/app/ui/components/scss/pages/dashboard.module.scss"
+import style from "@/app/ui/scss/pages/dashboard.module.scss"
 import { useEffect } from "react";
 
 export default function Dashboard() {

@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { getList } from '@/app/lib/utils';
-import { Button } from '@mantine/core';
+import { Button, Table } from '@mantine/core';
 
 interface MyDataTableProps {
   columns: GridColDef[],
@@ -54,23 +54,34 @@ export function MyDataTable(props: MyDataTableProps) {
       </div>
       
       <div className={style.ContainerDataGrid}>
-        <DataGrid
-          rows={listRecords}
-          columns={props.columns}
-          disableColumnMenu
-          onRowDoubleClick={onGridRowDblClick}
-          rowHeight={30}
-          columnHeaderHeight={40}
-          
-          
-          /*initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}*/
-          //pageSizeOptions={[5, 10]}        
-          //checkboxSelection
-        />
+        <Table.ScrollContainer minWidth={500}>
+          <Table striped>
+            <Table.Thead>
+              <Table.Tr>
+                {
+                  props.columns.map((value) => {
+                    return <Table.Th>{value.headerName}</Table.Th>
+                  })
+                }
+              </Table.Tr>
+            </Table.Thead>
+            <Table.Tbody>
+              {
+                listRecords.map((valueList) => {
+                  return (
+                    <Table.Tr key={valueList['id']}>
+                      { 
+                        props.columns.map((valueColumn) => {
+                          return <Table.Td>{valueList[valueColumn.field]}</Table.Td>                    
+                        })
+                      }
+                    </Table.Tr>
+                  )
+                })
+              }
+            </Table.Tbody>
+          </Table>
+        </Table.ScrollContainer>
       </div>
    </>   
   );

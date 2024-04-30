@@ -13,5 +13,6 @@
 
 .ContainerDataGrid {  
   margin: 0px 15px 0px 15px;
-  max-width: 100%;
+  //max-width: 100%;
+  white-space: nowrap;
 }

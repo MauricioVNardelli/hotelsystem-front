@@ -5,8 +5,8 @@ function getAPIClient(): AxiosInstance {
   const { 'hotelsystem.token': token } = parseCookies()
 
   const api = axios.create({
-    baseURL: 'http://localhost:3333'
-    //baseURL: 'https://back-end-hotel.onrender.com'
+    //baseURL: 'http://localhost:3333'
+    baseURL: 'https://back-end-hotel.onrender.com'
   })
 
   if (token) {

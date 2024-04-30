@@ -1,5 +1,5 @@
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import MenuItemRegister from './sidebar/MenuItemRegister';
+import MenuItemRegister from './sidebar/NavRegister';
 import style from '@/app/ui/components/scss/mySidebar.module.scss';
 import Link from 'next/link';
 import GridViewIcon from '@mui/icons-material/GridView';

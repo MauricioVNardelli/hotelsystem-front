@@ -1,6 +1,6 @@
 'use client'
 
-import { MyDataTable } from '@/app/ui/components/MyDataTable';
+import { MyDataTable } from '@/app/ui/components/MyDataTable2';
 import { Suspense, useContext, useEffect } from 'react';
 import { PageNameContext } from '../../layout';
 import { GridColDef } from '@mui/x-data-grid';
@@ -15,13 +15,13 @@ export default function PersonPage() {
   return (    
     <div>
       <Suspense fallback={<p>Carregando...</p>}>
-        <MyDataTable columns={personColumnListTable} table='fi_person' />
+        <MyDataTable columns={columnList} table='fi_person' />
       </Suspense>
     </div>
   )
 }
 
-const personColumnListTable: GridColDef[] = [
+const columnList: GridColDef[] = [
   {
     field: 'id',
     headerName: 'Cód',
