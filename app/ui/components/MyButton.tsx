@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function MyButton({ type, children, loading }: ButtonProps) {		
 	return (
-		<Button loading={loading} type={type} color='var(--purple-200)' >
+		<Button id='myButton' loading={loading} type={type} color='var(--purple-200)' >
 			{children}
 		</Button>
 	)

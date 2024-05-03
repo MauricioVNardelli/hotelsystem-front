@@ -12,7 +12,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { MyInputForm } from "@/app/ui/components/MyInputForm"
 import { MyButton } from '@/app/ui/components/MyButton';
 import { MySelect } from '@/app/ui/components/MySelect';
-import { Tabs } from '@mantine/core';
+//import { Tabs } from '@mantine/core';
 import { createRegister, getRegister, updateRegister } from "@/app/lib/utils";
 import { PageNameContext } from '../../../layout';
 
@@ -94,14 +94,14 @@ export default function PersonViewPage() {
           </Grid>
 
           { 
-            typePersonIsCPF ? tabComplementoFisica() : tabComplementoJuridica() 
+            typePersonIsCPF ? getGridFisica() : getGridJuridica() 
           }
 
-          <Tabs defaultValue='endereco' variant='outline' style={{marginTop: "10px"}}>
+          {/*<Tabs defaultValue='endereco' variant='outline' style={{marginTop: "10px"}}>
             <Tabs.List>              
               <Tabs.Tab value="endereco">Endereço</Tabs.Tab>
             </Tabs.List>            
-          </Tabs>
+        </Tabs>*/}
 
           <MyButton type='submit'>Salvar</MyButton>
         </form>      
@@ -110,7 +110,7 @@ export default function PersonViewPage() {
   )
 }
 
-function tabComplementoFisica(): React.ReactNode {
+function getGridFisica(): React.ReactNode {
   return (
     <Grid container spacing={1}>
       
@@ -126,7 +126,7 @@ function tabComplementoFisica(): React.ReactNode {
   )
 }
 
-function tabComplementoJuridica(): React.ReactNode {
+function getGridJuridica(): React.ReactNode {
   return (
     <Grid container spacing={1}>
       

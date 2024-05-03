@@ -1,5 +1,5 @@
 import { NavLink } from '@mantine/core';
-import { IconReservedLine, IconUser, IconFriends } from '@tabler/icons-react';
+import { IconReservedLine, IconUser, IconFriends, IconBath } from '@tabler/icons-react';
 
 export default function NavRegister() {
   
@@ -19,6 +19,7 @@ export default function NavRegister() {
         label="Usuário"
         leftSection={<IconUser size="1rem" stroke={1.5} />}
       />
+
     </NavLink>
   )
 }

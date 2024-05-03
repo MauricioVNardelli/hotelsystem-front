@@ -15,11 +15,8 @@
   //box-shadow: 0px 0px 2px #6d6969;
 
   [id = myButton] {
-    position: absolute;
-    bottom: 15px;
-    width: calc(100% - 40px);
-    //width: 90%;
-    //height: 2.5rem; 
+    margin-top: 20px;
+    width: 100%;
   }
 }
 
