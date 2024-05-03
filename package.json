@@ -12,6 +12,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mantine/core": "^7.8.1",
+    "@mantine/form": "^7.9.0",
     "@mantine/hooks": "^7.8.1",
     "@maskito/core": "^2.2.0",
     "@maskito/react": "^2.2.0",

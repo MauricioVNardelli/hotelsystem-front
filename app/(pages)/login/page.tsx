@@ -1,6 +1,6 @@
 'use client'
 
-import style from '@/app/ui/components/scss/pages/login.module.scss';
+import style from '@/app/ui/scss/pages/login.module.scss';
 
 import { useFormState, useFormStatus } from 'react-dom';
 import { lavishly_yours, lato } from '@/app/ui/fonts';

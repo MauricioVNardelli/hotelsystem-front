@@ -1,6 +1,6 @@
 'use client'
 
-import style from '@/app/ui/components/scss/myForm.module.scss'
+import style from '@/app/ui/scss/myForm.module.scss'
 
 import { useContext, useEffect } from 'react';
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form"

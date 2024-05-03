@@ -1,7 +1,8 @@
+import style from '@/app/ui/scss/myComponents.module.scss';
+
 import { useEffect, useState } from 'react';
-import style from '@/app/ui/components/scss/myComponents.module.scss';
 import { getList } from '@/app/lib/utils';
-import { UseFormRegisterReturn, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 interface MySelectProps extends React.HTMLAttributes<HTMLSelectElement> {
   label: string,
@@ -37,7 +38,7 @@ export function MySelect(props: MySelectProps) {
   
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} >		
-      <p>{label}</p>
+      <p className={style.label}>{label}</p>
       <select className={style.select} {...register(field, {valueAsNumber: true})} {...otherProps} >
         {listValue}
       </select>

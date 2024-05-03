@@ -3,11 +3,17 @@ import style from '@/app/ui/scss/myDataTable.module.scss'
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { getList } from '@/app/lib/utils';
-import { Button } from '@mantine/core';
+import { Button, Table } from '@mantine/core';
 
-interface MyDataTableProps {
+export type GridColDef = {
+  field: string,
+  headerName: string,
+  align?: 'right' | 'left' | 'center',
+  width: number,
+}
+
+type MyDataTableProps = {
   columns: GridColDef[],
   table: string
 }
@@ -20,10 +26,6 @@ export function MyDataTable(props: MyDataTableProps) {
   function handleInclude() {    
     router.push(`${pathname}/view`)
   };
-
-  function onGridRowDblClick(params: GridRowParams) {
-    router.push(`${pathname}/view?id=${params.id}`)
-  }
   
   //----------------------------------------------------
   async function getRecordForDataGrid() {
@@ -41,6 +43,10 @@ export function MyDataTable(props: MyDataTableProps) {
   }, []);
   //----------------------------------------------------
 
+  function onDoubleClick(id: string) {    
+    router.push(`${pathname}/view?id=${id}`)
+  }
+  
   return (
     <>
       <div className={style.ButtonPallet}>
@@ -54,23 +60,34 @@ export function MyDataTable(props: MyDataTableProps) {
       </div>
       
       <div className={style.ContainerDataGrid}>
-        <DataGrid
-          rows={listRecords}
-          columns={props.columns}
-          disableColumnMenu
-          onRowDoubleClick={onGridRowDblClick}
-          rowHeight={30}
-          columnHeaderHeight={40}
-          
-          
-          /*initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}*/
-          //pageSizeOptions={[5, 10]}        
-          //checkboxSelection
-        />
+        <Table.ScrollContainer minWidth={500}>
+          <Table striped>
+            <Table.Thead>
+              <Table.Tr>
+                {
+                  props.columns.map((value) => {
+                    return <Table.Th key={value.headerName}>{value.headerName}</Table.Th>
+                  })
+                }
+              </Table.Tr>
+            </Table.Thead>
+            <Table.Tbody id='tbody'>
+              {
+                listRecords.map((valueList) => {
+                  return (                    
+                    <Table.Tr id='tr' key={valueList['id']} onDoubleClick={() => onDoubleClick(valueList['id'])}>
+                      { 
+                        props.columns.map((valueColumn, index) => {
+                          return <Table.Td key={index}>{valueList[valueColumn.field]}</Table.Td>                    
+                        })
+                      }
+                    </Table.Tr>
+                  )
+                })
+              }
+            </Table.Tbody>
+          </Table>
+        </Table.ScrollContainer>
       </div>
    </>   
   );

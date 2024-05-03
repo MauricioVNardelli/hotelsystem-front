@@ -3,26 +3,25 @@
   border-radius: 4px;
   align-items: center;
   padding-left: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.23);
-
-  &:hover {
-    border-color: var(--gray-200);
-  }
+  border: 1px solid rgb(206, 212, 218);
+  font-size: 15px;
+  //font-family: var(--input-font-family, var(--mantine-font-family));
+  //font-size: var(--mantine-font-size-md);
 
   &:focus {
-    border-width: 2px;
+    border-width: 1px;
     border-color: var(--purple-200);
   }
 }
 
 .select {
   @extend .baseStyle;
-
-  option {
-    height: 40px;
-  }
 }
 
 .input {
   @extend .baseStyle;
+}
+
+.label {
+
 }

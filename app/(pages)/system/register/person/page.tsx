@@ -1,9 +1,8 @@
 'use client'
 
-import { MyDataTable } from '@/app/ui/components/MyDataTable2';
+import { MyDataTable, type GridColDef } from '@/app/ui/components/MyDataTable';
 import { Suspense, useContext, useEffect } from 'react';
 import { PageNameContext } from '../../layout';
-import { GridColDef } from '@mui/x-data-grid';
 
 export default function PersonPage() {
   const { setPageName } = useContext(PageNameContext);

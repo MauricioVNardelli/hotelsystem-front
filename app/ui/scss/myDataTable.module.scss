@@ -15,4 +15,16 @@
   margin: 0px 15px 0px 15px;
   //max-width: 100%;
   white-space: nowrap;
+
+  [id = tbody] {
+    :hover {
+      background-color: var(--mantine-color-blue-light);
+    }
+  }
+
+  [id = tr] {
+    :hover {
+      background-color: transparent;
+    }
+  }
 }
