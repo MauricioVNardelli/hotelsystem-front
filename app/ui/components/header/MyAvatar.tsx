@@ -1,4 +1,4 @@
-import { UnstyledButton, Group, Avatar, Text, rem } from '@mantine/core';
+import { Group, Avatar, Text } from '@mantine/core';
 import style from '@/app/ui/scss/avatar.module.scss';
 
 const urlAvatar = 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png';

@@ -1,8 +1,11 @@
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import MenuItemRegister from './sidebar/NavRegister';
 import style from '@/app/ui/components/scss/mySidebar.module.scss';
+
+import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import { IconDashboard } from '@tabler/icons-react';
+
+import MenuItemRegister from './sidebar/NavRegister';
 import Link from 'next/link';
-import GridViewIcon from '@mui/icons-material/GridView';
+
 
 interface MySidebarProps extends React.RefAttributes<HTMLHtmlElement> {
   valueCollapsed: boolean
@@ -16,7 +19,7 @@ export function MySidebar(props: MySidebarProps) {
 
           <MenuItem 
             component={<Link href="/system/dashboard" />} 
-            icon={<GridViewIcon/>}            
+            icon={<IconDashboard/>}            
           >
             Dashboard
           </MenuItem>
