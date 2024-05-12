@@ -74,7 +74,8 @@ export function getMask(prValueType: typeMask): MaskitoMask {
 //-- PRIVATE
 async function getUrlForTable(prTable: string): Promise<string> {
   switch (prTable) {
-    case 'fi_person': return '/person'
+    case 'fi_person': return '/person'; break;
+    case 'fi_roomitem': return '/roomitem'; break;
     default: return ''
   }
 }

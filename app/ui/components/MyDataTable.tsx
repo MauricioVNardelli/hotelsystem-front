@@ -10,7 +10,7 @@ export type GridColDef = {
   field: string,
   headerName: string,
   align?: 'right' | 'left' | 'center',
-  width: number,
+  width?: number,
 }
 
 type MyDataTableProps = {

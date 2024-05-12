@@ -26,4 +26,11 @@ export type Person = {
   update_at: string
 };
 
+export type Roomitem = {
+  id: number
+  description: string
+  detail: string
+  statusId: number
+}
+
 export type typeMask = "cep" | "cpf" | "cnpj" | "date" | "tel" | "cel" | undefined;
