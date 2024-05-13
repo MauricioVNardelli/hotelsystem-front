@@ -21,7 +21,7 @@ export function MySelect(props: MySelectProps) {
   const { register } = useFormContext();
 
   async function getValues() {
-    const result: TableList[] = await getList('', `/table?table=${table}`);    
+    const result: TableList[] = await getList('', `/enum?table=${table}`);    
 
     if (result.length > 0)  {
       const value = result.map((value) => {
